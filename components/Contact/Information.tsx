@@ -6,7 +6,7 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 const Information = () => {
   return (
-    <div className="w-full col-span-3 lg:col-span-2  h-full shadow-md shadow-slate-800 dark:shadow-blue-400 rounded-xl p-4 text-gray-300 bg-[url('/assets/contact.jpg')] bg-bottom bg-cover">
+    <div className="w-11/12 sm:w-full col-span-3 lg:col-span-2  h-full shadow-md shadow-slate-800 dark:shadow-blue-400 rounded-xl p-4 text-gray-300 bg-[url('/assets/contact.jpg')] bg-bottom bg-cover">
       <div className="lg:w-full p-4 h-full flex flex-col align-center justify-center">
         <div className="w-full flex flex-col border-b-2 border-indigo-600">
           <p className="py-4 text-center text-lg">

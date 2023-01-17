@@ -76,10 +76,10 @@ const Contact = () => {
             Get In Touch
           </h2>
         </div>
-        <div data-aos="fade-up" className="grid lg:grid-cols-5 gap-8">
+        <div data-aos="fade-up" className="ml-3 grid lg:grid-cols-5 gap-8">
           <Information />
 
-          <div className="w-full h-auto col-span-3 rounded-xl lg:p-4 bg-gray-200 dark:bg-slate-900 shadow-md shadow-slate-800 dark:shadow-blue-400">
+          <div className="w-11/12 sm:w-full h-auto col-span-3 rounded-xl lg:p-4 bg-gray-200 dark:bg-slate-900 shadow-md shadow-slate-800 dark:shadow-blue-400">
             <div className="p-4">
               <form ref={form} onSubmit={handleSubmit(sendForm)}>
                 <div>
