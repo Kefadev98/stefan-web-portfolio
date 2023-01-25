@@ -1,29 +1,15 @@
-import React, { useState, useEffect } from "react";
-import {
-  QuerySnapshot,
-  onSnapshot,
-  collection,
-  DocumentData,
-} from "firebase/firestore";
+import React from "react";
 //Internal imports
 import Technologies from "./Technologies";
-import { database } from "../../firebase/firebase-config";
-import { TechnologiesTypes } from "../../models/model-types";
+import { useTechnologiesQuery } from "../../query/useTechnologiesQuery";
 
 const Skills = () => {
-  const [technologies, setTechnologies] = useState<TechnologiesTypes[]>([]);
-  const technologiesCollection = collection(database, "technologies");
-
-  useEffect(() => {
-    onSnapshot(
-      technologiesCollection,
-      (snapshot: QuerySnapshot<DocumentData>) => {
-        setTechnologies(
-          snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-        );
-      }
-    );
-  }, []);
+  const {
+    data: technologies,
+    isLoading,
+    isError,
+    error,
+  } = useTechnologiesQuery();
 
   return (
     <div
@@ -38,6 +24,8 @@ const Skills = () => {
           Skills
         </p>
         <h2 className="py-4 text-slate-800 dark:text-gray-300">Technologies</h2>
+        {isLoading && <p className="text-3xl m-5">Loading...</p>}
+        {isError && <p className="text-3xl m-5">Error: {error.message}</p>}
         <div
           data-aos="fade-up"
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"

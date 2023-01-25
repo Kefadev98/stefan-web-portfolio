@@ -1,13 +1,18 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { ThemeContextProvider } from "../context/ThemeContext";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const client = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <ThemeContextProvider>
-        <Component {...pageProps} />
-      </ThemeContextProvider>
+      <QueryClientProvider client={client}>
+        <ThemeContextProvider>
+          <Component {...pageProps} />
+        </ThemeContextProvider>
+      </QueryClientProvider>
     </>
   );
 }
