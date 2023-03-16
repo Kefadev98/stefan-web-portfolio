@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 //Internal imports
-import { TechnologiesTypes } from "../models/model-types";
+import { TechnologiesTypes } from "../types/TechnologiesTypes";
 import { getTechnologies } from "../firebase/firebase-service";
 
 export const useTechnologiesQuery = () => {

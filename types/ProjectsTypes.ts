@@ -1,10 +1,3 @@
-export interface TechnologiesTypes {
-  id?: string;
-  name?: string;
-  description?: string;
-  logo?: string;
-}
-
 export interface ProjectsTypes {
   deployUrl?: string;
   projectId?: string;
@@ -14,10 +7,4 @@ export interface ProjectsTypes {
   projectUrl?: string;
   githubImg?: string;
   vercelImg?: string;
-}
-
-export interface ContactTypes {
-  user_name: string;
-  user_email: string;
-  message: string;
 }

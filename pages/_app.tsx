@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "typeface-poppins";
 import type { AppProps } from "next/app";
 import { ThemeContextProvider } from "../context/ThemeContext";
 import { QueryClient, QueryClientProvider } from "react-query";

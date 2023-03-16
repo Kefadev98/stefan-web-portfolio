@@ -1,19 +1,18 @@
 import Link from "next/link";
 import React, { useRef, useEffect } from "react";
-import emailjs from "@emailjs/browser";
 import { HiOutlineChevronDoubleUp } from "react-icons/hi";
 import { useForm, SubmitHandler } from "react-hook-form";
+import emailjs from "@emailjs/browser";
 import Aos from "aos";
 import "aos/dist/aos.css";
 //Internal imports
 import Information from "./Information";
-import { ContactTypes } from "../../models/model-types";
+import { ContactTypes } from "../../types/ContactTypes";
 
 const Contact = () => {
-  {
-    /*In this component I used React-hook-form combined with emailjs library
- for send emails using only client-side technologies*/
-  }
+  /*In this component I used React-hook-form combined with emailjs library
+  for send emails using only client-side technologies*/
+
   const {
     register,
     handleSubmit,
@@ -29,21 +28,22 @@ const Contact = () => {
   });
   console.log(watch());
 
-  {
-    /*Data is sent to Emailjs through the sendForm method,
+  /*Data is sent to Emailjs through the sendForm method,
    where I specified  Service ID, Template ID, and Public Key,
    Once you click send, the data is sent to my email*/
-  }
-  const form: any = useRef();
+
+  const form = useRef<HTMLFormElement>(null);
 
   const sendForm: SubmitHandler<ContactTypes> = () => {
     try {
-      emailjs.sendForm(
-        "service_eh4xgt9",
-        "template_ub61q6s",
-        form.current,
-        "vbNm2-yr6zT-Ko0mI"
-      );
+      if (form.current) {
+        emailjs.sendForm(
+          "service_eh4xgt9",
+          "template_ub61q6s",
+          form.current,
+          "vbNm2-yr6zT-Ko0mI"
+        );
+      }
     } catch (err: any) {
       console.log(err.text);
     }
@@ -65,13 +65,11 @@ const Contact = () => {
   return (
     <div
       id="contact"
-      className="w-full overflow-hidden bg-gray-300 dark:bg-[#00040F] lg:h-screen"
+      className="w-full overflow-hidden lg:h-screen bg-gray-300 dark:bg-darkBackground"
     >
       <div className="max-w-[1240px] m-auto px-2 py-16 w-full">
         <div data-aos="fade-up">
-          <p className="text-xl tracking-widest uppercase text-indigo-600 border-b-2 border-pink-600">
-            Contact
-          </p>
+          <h5>Contact</h5>
           <h2 className="py-4 text-slate-800 dark:text-gray-300">
             Get In Touch
           </h2>
@@ -79,7 +77,7 @@ const Contact = () => {
         <div data-aos="fade-up" className="ml-2 grid lg:grid-cols-5 gap-8">
           <Information />
 
-          <div className="w-11/12 sm:w-full h-auto col-span-3 rounded-xl lg:p-4 bg-gray-200 dark:bg-slate-900 shadow-md shadow-slate-800 dark:shadow-blue-400">
+          <div className="contact-form">
             <div className="p-4">
               <form ref={form} onSubmit={handleSubmit(sendForm)}>
                 <div>
@@ -95,7 +93,6 @@ const Contact = () => {
                     {...register("user_name", {
                       required: "Please enter your name",
                     })}
-                    className="border-b-2 w-full bg-transparent p-3 flex border-indigo-500 outline-none text-slate-800 dark:text-gray-300"
                     type="text"
                     name="user_name"
                   />
@@ -115,7 +112,6 @@ const Contact = () => {
                       required: "Please enter your e-mail adress",
                     })}
                     aria-invalid={errors.user_email ? "true" : "false"}
-                    className="border-b-2 bg-transparent p-3 flex border-indigo-500 outline-none text-slate-800 dark:text-gray-300"
                     type="email"
                     name="user_email"
                   />
@@ -133,7 +129,6 @@ const Contact = () => {
                     {...register("message", {
                       required: "Please enter message to me",
                     })}
-                    className="border-2 bg-transparent rounded-md p-3 border-indigo-500 outline-none text-slate-800 dark:text-gray-300"
                     rows={10}
                     name="message"
                   ></textarea>

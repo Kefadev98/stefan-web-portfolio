@@ -14,6 +14,12 @@ module.exports = {
       fontFamily: {
         poppins: ['"Poppins"', "cursive"],
       },
+      colors: {
+        darkBackground: "#00040F",
+        lightBackground: "#d1d5db",
+        hoverBlue: "#272a41",
+        hoverPurple: "#261d88",
+      },
     },
   },
   plugins: [],

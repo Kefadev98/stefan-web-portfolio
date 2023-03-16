@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 //Internal imports
-import { ProjectsTypes } from "../models/model-types";
+import { ProjectsTypes } from "../types/ProjectsTypes";
 import { getProjects } from "../firebase/firebase-service";
 
 export const useProjectsQuery = () => {
